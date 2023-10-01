@@ -1,0 +1,7 @@
+{
+  "name": "autopw-fl-plugin",
+  "dependencies": {
+    "copy-paste": "^1.5.3",
+    "generate-password": "^1.7.0"
+  }
+}
