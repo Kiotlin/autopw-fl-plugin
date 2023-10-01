@@ -1,0 +1,12 @@
+{
+  "ID": "fdbec681-1b31-4a31-ba32-dbf73e89a9bf",
+  "ActionKeyword": "pass",
+  "Name": "Password Generator",
+  "Description": "Auto generate high complexity random password.",
+  "Author": "ri1ken",
+  "Version": "1.0.0",
+  "Language": "javascript",
+  "Website": "https://github.com/Kiotlin/autopw-fl-plugin",
+  "ExecuteFileName": "main.js",
+  "IcoPath": "Images\\app.png"
+}
