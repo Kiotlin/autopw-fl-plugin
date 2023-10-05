@@ -14,7 +14,7 @@ const rules_exist = isQuery? ( sub_parameters.length >= 2 ) : false;
 const default_pwd_length = 18;
 /**
  * SOME RULES FOR GENERATING PASSWORD:
- * TODO: length: any number
+ * TODO: length: any number <-- using the third parameter
  * numbers: 'n'
  * symbols: '@'
  * lowercase: 'l'
@@ -62,6 +62,7 @@ if ( handle_exist && rules_exist && is_at_least_1_true(mark) ) {
 }
 
 function check_query(pwd) {
+	/* TODO: Return ERROR Message when query is too long (>3 parameters) */
 	console.log(JSON.stringify(
 		{
 			"result": [{
