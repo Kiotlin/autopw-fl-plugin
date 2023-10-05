@@ -16,21 +16,20 @@ const default_pwd_length = 18;
  * SOME RULES FOR GENERATING PASSWORD:
  * TODO: length: any number
  * numbers: 'n'
- * symbols: '!'
+ * symbols: '@'
  * lowercase: 'l'
  * uppercase: 'u'
- * excludeSimilarCharacters: 's'
+ * all: 'a'
  * TODO: exclude: String (only take effect when handle equals to '-')
- * strict: 't'
  */
 const rules = {
 	numbers_mk: 'n',
 	symbols_mk: '@',
 	lowercase_mk: 'l',
 	uppercase_mk: 'u',
-	strict_mk: 's',
-	all_mk: 'n@lus'
-};
+	use_all: 'a',
+	all_mk: '@nalu'
+}
 
 if ( isCopy ) {
 	pwd = parameters[0];
@@ -39,15 +38,13 @@ if ( isCopy ) {
 	return 0;
 }
 
-/* TODO: 'pwd > s' would crash */
 if ( handle_exist && rules_exist && is_at_least_1_true(mark) ) {
 	password = gp.generate({
 		length: 18,
-		numbers: mark.includes(rules.numbers_mk),
-		symbols: mark.includes(rules.symbols_mk),
-		lowercase: mark.includes(rules.lowercase_mk),
-		uppercase: mark.includes(rules.uppercase_mk),
-		strict: mark.includes(rules.strict_mk),
+		numbers: mark.includes(rules.numbers_mk) || mark.includes(rules.use_all),
+		symbols: mark.includes(rules.symbols_mk) || mark.includes(rules.use_all),
+		lowercase: mark.includes(rules.lowercase_mk) || mark.includes(rules.use_all),
+		uppercase: mark.includes(rules.uppercase_mk) || mark.includes(rules.use_all),
 	});
 
 	check_query(password);
@@ -56,7 +53,9 @@ if ( handle_exist && rules_exist && is_at_least_1_true(mark) ) {
 	default_pwd = gp.generate({
 		length: default_pwd_length,
 		numbers: true,
-		// symbols: true
+		symbols: false,
+		lowercase: true,
+		uppercase: true
 	});
 
 	check_query(default_pwd);
